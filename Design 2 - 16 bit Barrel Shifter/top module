@@ -1,0 +1,38 @@
+`timescale 1ns / 1ps
+
+module barrelShifter_16
+    (
+        input logic [15:0]data,         //changed 7 -> 15
+        input logic lr,
+        input logic [3:0] shiftAmt,    // changed 2 -> 3
+        output logic [15:0]f              //changed 7 ->15
+    );
+    
+    //signal declarations
+     logic [15:0] r0,r1,r2;             //changed 7 ->15
+     logic [15:0] L0,L1,L2;         
+     logic [15:0]x0,x1;                
+     
+      //rotate right
+      
+      assign r0 = shiftAmt[0] ? {data[0], data[15:1]} : data;     //Stage 0, rotate by 0 or 1
+      
+      assign r1 = shiftAmt[1] ? {r0[1:0], r0[15:2]} : r0;          //Stage 1. rotate by 0 or 2
+      
+      assign r2= shiftAmt[2] ? {r1[3:0], r1[15:4]} : r1;          //Stage 2, rotate by 0 or 4  
+      
+      assign x0= shiftAmt[3] ? {r2[7:0], r2[15:8]} : r2;          //Stage 3, rotate by 0 or 8     //added extra line
+      
+      //rotate left
+      
+      assign L0 = shiftAmt[0] ? {data[14:0], data[15]} : data;     //Stage 0, rotate by 0 or 1
+      
+      assign L1 = shiftAmt[1] ? {L0[13:0], L0[15:14]} : L0;          //Stage 1. rotate by 0 or 2
+      
+      assign L2= shiftAmt[2] ? {L1[11:0], L1[15:12]} : L1;          //Stage 2, rotate by 0 or 4  
+      
+      assign x1 = shiftAmt[3] ? {L2[7:0], L2[15:8]} : L2;          //Stage 3, rotate by 0 or 8                
+     
+      mux_2to1 M0(.a(x0),.b(x1),.s(lr),.f(f));                           //instantiate 2 to 1 MUX 
+      
+endmodule
