@@ -1,0 +1,18 @@
+`timescale 1ns / 1ps
+
+module mux_2to1
+    (
+        input logic [7:0]a,b,
+        input logic s,
+        output logic [7:0]f
+    );
+    
+    always_comb
+    begin
+            case(s)
+            1'b0: f = a;
+            1'b1: f = b;
+            default: f = a;
+            endcase
+     end
+endmodule
