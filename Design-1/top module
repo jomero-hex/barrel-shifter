@@ -21,7 +21,7 @@ module barrelShifter
       
       assign x0= shiftAmt[2] ? {r1[3:0], r1[7:4]} : r1;          //Stage 2, rotate by 0 or 4       
             
-      //rotate shift
+      //rotate Left
       
        assign L0 = shiftAmt[0] ? {data[6:0], data[7]} : data;     //Stage 0, rotate by 0 or 1
       
