@@ -1,0 +1,31 @@
+`timescale 1ns / 1ps
+
+module barrelshifter_32_tb;
+    logic [31:0] data;
+    logic [4:0] shiftAmt;
+    logic lr;
+    logic [31:0]f;
+    
+    barrelShifter_32 uut(.data(data), .shiftAmt(shiftAmt),.lr(lr),.f(f));//unit under test
+     
+    initial begin
+    data = 32'b0100_0100_0010_0011_1000_0001_0000_1000;
+    lr = 1'b0;
+    #10 shiftAmt = 1;
+    #10 shiftAmt = 2;
+    #10 shiftAmt = 4;
+    #10 shiftAmt = 8;
+    #10 shiftAmt = 16;
+    #10 shiftAmt = 5;
+    #10 shiftAmt = 1;   lr = 1'b1; 
+    #10 shiftAmt = 2;
+    #10 shiftAmt = 4;
+    #10 shiftAmt = 8;
+    #10 shiftAmt = 16;
+    #10 shiftAmt = 5;
+    #10 shiftAmt = 7;   lr = 1'b0; 
+    #10 shiftAmt = 8;
+    #10 
+    $stop; //stop the simulation and return the control to the software application
+    end
+endmodule
