@@ -26,7 +26,6 @@ module top
         input logic [15:0] data16,
         input logic [31:0] data32,
         input logic [7:0] amt,
-        //input logic [3:0] amt16,
         output logic [7:0] dataOut8,
         output logic [15:0] dataOut16,
         output logic [31:0] dataOut32
