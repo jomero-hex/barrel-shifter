@@ -25,12 +25,18 @@ module reverseBits(
     input logic en,
     output logic [7:0]outData
     );
+    logic [7:0]reverse;
+    generate
+            genvar i;
+            for (i = 0; i < 8; i = i +1)
+                    assign reverse[7-i]=inData[i];
+    endgenerate
     always_comb
-    begin
+        begin
             case(en)
-            1'b0: outData=inData;
-            1'b1: outData={inData[0],inData[1],inData[2],inData[3],inData[4],inData[5],inData[6],inData[7]};
-            default: outData=inData;
+                1'b0: outData = inData;
+                1'b1: outData = reverse;
+                default: outData = inData;
             endcase
-    end
+        end
 endmodule
