@@ -26,12 +26,14 @@ module NbitBarrelShifter_tb;
     
     logic [N - 1:0] data;
     logic [x : 0] shiftAmt;
+    logic lr;
     logic [N - 1:0] f;
     
-    NbitBarrelShifter  #(.N(N)) uut0 (.*);
+    Top  #(.N(N)) uut0 (.*);
                     
     initial begin
-    shiftAmt = 0;  
+    shiftAmt = 0;
+    lr=0;
     data = 16'b00100011_10000011;
     #10 shiftAmt = 1;  
     #10 shiftAmt = 2;   
@@ -41,7 +43,15 @@ module NbitBarrelShifter_tb;
     #10 shiftAmt = 6;  
     #10 shiftAmt = 7;  
     #10 shiftAmt = 8;  
-    #10 
+    #10 shiftAmt = 0; lr=1;
+    #10 shiftAmt = 1;  
+    #10 shiftAmt = 2;   
+    #10 shiftAmt = 3;   
+    #10 shiftAmt = 4;   
+    #10 shiftAmt = 5;  
+    #10 shiftAmt = 6;  
+    #10 shiftAmt = 7;  
+    #10 shiftAmt = 8;   
     $stop; //stop the simulation and return the control to the software application
     end
 endmodule
