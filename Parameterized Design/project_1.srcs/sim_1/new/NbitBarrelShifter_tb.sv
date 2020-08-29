@@ -30,7 +30,9 @@ module NbitBarrelShifter_tb;
     logic [N - 1:0] f;
     
     Top  #(.N(N)) uut0 (.*);
-                    
+     
+    // lr=0 is roll right; lr=1 is roll left
+    
     initial begin
     shiftAmt = 0;
     lr=0;
