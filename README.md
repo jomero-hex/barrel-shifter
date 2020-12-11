@@ -3,7 +3,7 @@
 ## Description:
 
 Consider an 8-bit shifting circuit that can perform a rotating-right or a rotating-left operation. An
-additional 1-bit control signal, <i>lr<i>, specifies the desired direction.
+additional 1-bit control signal, <i>(lr), specifies the desired direction.
 
 1. Design the circuit using one rotate-right circuit, one rotate-left circuit, and one 2-to-1
 multiplexer to select the desired result. Derive the code.
