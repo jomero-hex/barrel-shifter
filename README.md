@@ -1,6 +1,6 @@
-# Multi-Function Barrel Shifter using 8/16/32 bits
+# Multi-Function Barrel Shifter using 8/16/32 Bits
 
-## Description
+## Description:
 
 Consider an 8-bit shifting circuit that can perform a rotating-right or a rotating-left operation. An
 additional 1-bit control signal, lr, specifies the desired direction.
