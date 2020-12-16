@@ -18,3 +18,4 @@ the two designs.
 5. Expand the code for a 16-bit circuit and synthesize the code. Repeat steps 1 to 5.
 
 6. Expand the code for a 32-bit circuit and synthesize the code. Repeat steps 1 to 5.
+
